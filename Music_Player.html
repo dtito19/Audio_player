@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Main.css">
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <title>Music Player</title>
+</head>
+<body>
+    <div id="bg">
+        <div id="blackLayer"></div>
+        <img src="images/2.jpg"/>
+    </div>
+
+    <div id="main">
+        <div id="image">
+            <img src="images/2.jpg" />
+        </div>
+
+        <div id="player">
+            <div id="songTitle">Demo</div>
+            <div id="buttons">
+                <button id="back"><img src="images/back.png" height="90%" width="90%" /></button>
+                <button id="play" onclick="playOrPauseSong()"><img src="images/pause.png"/></button>
+                <button id="next"><img src="images/next.png" height="90%" width="90%" /></button>
+            </div>
+
+            <div id="seek-bar">
+                <div id="fill"></div>
+                <div id="handle"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    var songs = ["play2.mp3", "play3.mp3", "play4.mp3"];
+    var poster = ["1.jpg", "2.jpg", "bim.jpg", "blue.jpg"];
+    var songTitle = document.getElementById("songTitle");
+    var fillBar = document.getElementById("fill");
+
+    // now create object for audio class
+    var song = new Audio();
+
+    //it point to the current song
+    var currentSong = 0; 
+
+    //Now play the song when window load
+    //it will call the function playsong when window is load
+    window.onload = playSong;
+
+    function playSong(){
+        //set the source of first song
+        song.src = songs[currentSong];
+
+        //set the title of song
+        songTitle.textContent = songs[currentSong];
+
+        //play the song
+        song.play();
+    }
+
+//function to change icon
+    function playOrPauseSong(){
+        if(song.paused){
+            song.play();
+            $("#play img").attr("src", "pause.png");
+        }
+        else{
+            song.pause();
+            $("#play img").attr("src", "play.png");
+        }
+    }
+
+    //Call the function when button is clicked
+
+
+
+
+</script>
+</html>
